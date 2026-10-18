@@ -23,6 +23,18 @@ class Produto {
         return this.precoUnitario * quantidadeVenda;
     }
 
+    reporEstoque(quantidade: number): string {
+
+        if (quantidade <= 0 || !Number.isInteger(quantidade)) {
+           return "Valor inválido";
+            
+        }
+         this.estoque = this.estoque + quantidade;
+        return `Estoque reposto! ${this.estoque}`;
+
+
+    }
+
     // Realizar venda
     vender(quantidadeVenda: number): string {
 
@@ -63,3 +75,9 @@ console.log("Estoque inicial:", soro.consultarEstoque());
 console.log(soro.vender(25));
 
 console.log("Estoque final:", soro.consultarEstoque());
+
+console.log(soro.reporEstoque(100));
+
+console.log(soro.consultarEstoque());
+
+console.log(soro.reporEstoque(-10));
